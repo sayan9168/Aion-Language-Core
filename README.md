@@ -1,4 +1,4 @@
-# 🌌 Aion (আয়ন) - The Native AI-Hardware Language
+# 🌌 Aion - The Native AI-Hardware Language
 
 **Aion** is a revolutionary, low-level programming language designed to eliminate the middleman between AI and Hardware. Unlike Java or Python, Aion does not run on a Virtual Machine or a pre-existing compiler. It communicates directly with the CPU and mobile sensors via its own **Instruction Set Architecture (ISA)**.
 
