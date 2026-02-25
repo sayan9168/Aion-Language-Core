@@ -1,0 +1,33 @@
+# ==========================================
+# AION HARDWARE SIGNAL BRIDGE
+# Purpose: Real-time Signal Processing (Battery, Sensor, Time)
+# ==========================================
+
+[SIGNAL_INPUT_PORTS]
+PORT_BATTERY:   0x10A1    // ব্যাটারি লেভেল রিড করার পোর্ট
+PORT_THERMAL:   0x10A2    // ফোনের তাপমাত্রা রিড করার পোর্ট
+PORT_LIGHT:     0x10A3    // পারিপার্শ্বিক আলো রিড করার পোর্ট
+
+[SIGNAL_PROCESSING]
+# যখনই হার্ডওয়্যার থেকে কোনো সিগন্যাল আসবে, এটি রেজিস্টারে পাঠাবে
+unit intercept_signal(port_id) {
+    var raw_value = read_port(port_id)
+    
+    state (port_id == PORT_BATTERY) {
+        if (raw_value < 15) {
+            emit "SIGNAL: BATTERY_LOW"
+            call Aion.UI.update_mood("low_power_red")
+        }
+    }
+    
+    state (port_id == PORT_THERMAL) {
+        if (raw_value > 45) {
+            emit "SIGNAL: OVERHEATING"
+            halt_sys() // সিস্টেম সুরক্ষা
+        }
+    }
+}
+
+[BRIDGE_STATUS]
+ACTIVE_CHANNELS: ALL
+SECURITY_LEVEL: HARDWARE_DIRECT
