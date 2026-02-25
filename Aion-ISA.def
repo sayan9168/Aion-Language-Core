@@ -1,0 +1,30 @@
+# ==========================================
+# AION NATIVE INSTRUCTION SET (V 1.0)
+# Purpose: Direct Hardware & AI Integration
+# Dependency: NONE (Zero External Compiler)
+# ==========================================
+
+# [SYSTEM COMMANDS]
+0x00: HALT        // সিস্টেম বন্ধ করা
+0x01: LINK        // হার্ডওয়্যার পিন বা সেন্সর কানেক্ট করা
+0x02: EMIT        // ডাটা ট্রান্সফার (Bus transfer)
+
+# [BIOMETRIC & SECURITY - YOUR SPECIAL FEATURE]
+0x10: SCAN_DNA    // সরাসরি ফিঙ্গারপ্রিন্ট সেন্সর থেকে RAW ডাটা নেওয়া
+0x11: AI_AUTH     // AI এনক্রিপশন লেয়ারে বায়োমেট্রিক চেক করা
+0x12: LOCK_SYS    // হার্ডওয়্যার লেভেলে সিস্টেম লক করা
+
+# [GRAPHICS & UI]
+0x20: FLUX_WALL   // সরাসরি ডিসপ্লে বাফারে ওয়ালপেপার পুশ করা
+0x21: RGB_SHIFT   // স্ক্রিন কালার বা ব্রাইটনেস হার্ডওয়্যার লেভেলে চেঞ্জ
+
+# [MEMORY & LOGIC]
+0x30: LOAD        // মেমোরি রেজিস্টারে ডাটা লোড
+0x31: STORE       // রেজিস্টার থেকে মেমোরিতে সেভ
+0x32: PULSE       // লুপ বা ফ্রিকোয়েন্সি সেট করা
+0x33: STATE_CHECK // কন্ডিশনাল লজিক (If/Else equivalent)
+
+# [RESOURCES]
+REG_A: 0xF0       // জেনারেল প্রসেসিং রেজিস্টার
+REG_B: 0xF1       // AI প্রসেসিং রেজিস্টার
+REG_S: 0xF2       // সেন্সর ডাটা রেজিস্টার
