@@ -1,0 +1,21 @@
+# ==========================================
+# AION NATIVE LINKER & MEMORY MAPPER
+# Role: Mapping Aion Logic to Real Hardware Addresses
+# ==========================================
+
+[HARDWARE_ADDRESS_MAP]
+DISPLAY_BUFFER  => 0x40000000 (Direct Graphics Access)
+SENSOR_INPUT    => 0x50000000 (Fingerprint/DNA Hardware)
+AI_PROCESSOR    => 0x60000000 (Neural Processing Unit)
+
+[BOOT_SEQUENCE]
+1. LOAD Aion-ISA.def
+2. READ core_boot.aion
+3. TRANSLATE via Aion-Encoder.native
+4. BIND "push_visual" to DISPLAY_BUFFER
+5. BIND "read_dna" to SENSOR_INPUT
+
+[EXECUTION_GATE]
+# এই অংশটি প্রসেসরের 'Instruction Pointer' কে আমাদের প্রথম 
+# কোডের লাইনে নিয়ে যাবে।
+JUMP TO initialization() AT 0x0001
