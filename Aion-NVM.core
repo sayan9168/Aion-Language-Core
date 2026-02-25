@@ -1,0 +1,27 @@
+# ==========================================
+# AION NATIVE VIRTUAL MACHINE (NVM) CORE
+# Dependency: ZERO (Raw Hardware Logic)
+# ==========================================
+
+[VIRTUAL_CPU_LAYOUT]
+PC (Program Counter): 0x0000  // বর্তমান ইনস্ট্রাকশন অ্যাড্রেস
+IR (Instruction Reg): 0x0000  // বর্তমান কমান্ড
+SP (Stack Pointer):   0xFFFF  // মেমোরি স্ট্যাক
+
+[NATIVE_RUNTIME_LOGIC]
+1. FETCH:
+   - READ byte from Aion-Genesis.bin at address [PC]
+   - MOVE byte to IR
+
+2. DECODE:
+   - IF IR == 0x10 -> GOTO SCAN_DNA_LOGIC
+   - IF IR == 0x20 -> GOTO FLUX_WALL_LOGIC
+   - IF IR == 0x00 -> HALT_SYSTEM
+
+3. EXECUTE:
+   - RUN the decoded logic directly on Aion-Linker addresses.
+   - INCREMENT PC to next byte.
+
+[HARDWARE_SYNC]
+SYNC_RATE: 1.2GHz
+VOLTAGE_MODE: NATIVE_CONTROL
